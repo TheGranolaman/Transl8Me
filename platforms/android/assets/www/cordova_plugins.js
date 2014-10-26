@@ -47,7 +47,8 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "org.apache.cordova.speech.speechsynthesis": "0.1.0",
-    "com.phonegap.plugins.speech": "1.0.0"
+    "com.phonegap.plugins.speech": "1.0.0",
+    "org.apache.cordova.console": "0.2.12-dev"
 }
 // BOTTOM OF METADATA
 });

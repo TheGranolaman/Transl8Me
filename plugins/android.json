@@ -27,6 +27,9 @@
         },
         "com.phonegap.plugins.speech": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {}

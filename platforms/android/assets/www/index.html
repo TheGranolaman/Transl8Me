@@ -93,8 +93,11 @@
             text-decoration: none;
             background-color: #F86808;
             }
+
         </style>
         <script type="text/javascript">
+
+             var speechLang="";         
 
              $(document).ready(function () {
                 $('#nav li').hover(
@@ -106,6 +109,7 @@
                     $('ul', this).hide();
                 });
             });
+
             function recordMe() {
                 var maxMatches = 5;
                 var promptString = "Speak into the mic"; // optional
@@ -118,7 +122,6 @@
             }
 
             function speakToMe(){
-                var lang = "";
                 // $(document).on('click', '.dropdown-menu li label', function () {
                 //     selText = $(this).text();
                 //     lang = selText;
@@ -126,8 +129,13 @@
                 var text = document.getElementById('l2').value;
                 var utt = new SpeechSynthesisUtterance();
                 utt.text = text;
-                utt.lang = "fr-FR";//for now
+                utt.lang = speechLang;
                 speechSynthesis.speak(utt);
+            }
+
+            function setLanguage(lang){
+                console.log("This is the lang " + lang);
+                speechLang = lang;
             }
         </script>
         <div class="app">
@@ -137,14 +145,14 @@
                 </div> 
                  <div id="ttc" style="text-align:center;width:100%">
                    <div id="transmit" class="btn-group">
-                     <input id="record" type="button" value="record" class="btn btn-danger btn-lg" style="width:85%;margin-left:auto;margin-right:auto" onclick="recordMe()">
+                     <input id="record" type="button" value="record" class="btn btn-danger btn-lg" style="width:95%;margin-left:auto;margin-right:auto" onclick="recordMe()">
                    </div>
                 </div>
               <div>
               </div>
              <div id="t2c">
                 <textarea rows="20" id="l2"></textarea>
-                <div>
+<!--                 <div>
                 <ul id="nav">
                     <li class="btn btn-primary"> <a href="#"> Language </a>
                         <ul>
@@ -155,17 +163,29 @@
                             <li><a href="#"> de-DE </a></li>
                             <li><a href="#"> it-IT </a></li>
                             <li><a href="#"> zh-CN </a></li>
+                            <li><a href="#"> zh-TW </a></li>
                         <ul>
                     <li>
                 </ul><br>
-                </div>  
+                </div>   -->
                 <div style ="text-align:center;width:100%">
                     <div class="btn-group">
-                        <input id="speak" type="button" value="speak" class="btn btn-primary btn-lg" style="width:85%;margin-left:auto;margin-right:auto" onclick="speakToMe()">
+                        <input id="speak" type="button" value="speak" class="btn btn-primary btn-lg" style="width:95%;margin-left:auto;margin-right:auto" onclick="speakToMe()">
                     </div>  
-                
             </div>  
             </div>
+            <div style="width:100%">
+            <table style="width:30%">
+                <tr ><td><input id="enus" style="width:100%"type="button" value="English" class="btn btn-warning" onclick="setLanguage('en-US')"></td>
+                <td><input id="engb" style="width:100%"type="button"  value="English(Britain)" class="btn btn-warning " onclick="setLanguage('en-GB')"></td>
+                <td><input id="frfr" style="width:100%"type="button"  value="French" class="btn btn-warning " onclick="setLanguage('fr-FR')"></td></tr>
+                <tr><td><input id="kokr" style="width:100%"type="button"  value="Korean" class="btn btn-warning " onclick="setLanguage('ko-KR')"></td>
+               <td><input id="dede" style="width:100%"type="button"  value="German" class="btn btn-warning " onclick="setLanguage('de-DE')"></td>
+                <td><input id="itit" style="width:100%"type="button"  value="Italian" class="btn btn-warning " onclick="setLanguage('it-IT')"></td></tr>
+               <tr><td><input id="zhcn" style="width:100%"type="button"  value="Chinese(China)" class="btn btn-warning " onclick="setLanguage('zh-CN')"></td>
+                <td><input id="zhtw" style="width:100%"type="button"  value="Chinese(Taiwan)" class="btn btn-warning " onclick="setLanguage('zh-TW')"></td></tr>
+            </table>
+          </div>
         </div>
     </body>
 </html>
